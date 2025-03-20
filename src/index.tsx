@@ -5,7 +5,7 @@ import "@excalidraw/excalidraw/index.css";
 
 import type * as TExcalidraw from "@excalidraw/excalidraw";
 
-import App from "./components/ExampleApp";
+import ExampleApp from "./components/ExampleApp";
 
 declare global {
     interface Window {
@@ -18,8 +18,8 @@ const root = createRoot(rootElement);
 const { Excalidraw } = window.ExcalidrawLib;
 root.render(
     <StrictMode>
-        <App appTitle={"Excalidraw Example"} useCustom={(api: any, args?: any[]) => {}} excalidrawLib={window.ExcalidrawLib}>
+        <ExampleApp appTitle={"Excalidraw Example"} useCustom={(api: any, args?: any[]) => {}} excalidrawLib={window.ExcalidrawLib}>
             <Excalidraw />
-        </App>
+        </ExampleApp>
     </StrictMode>
 );
