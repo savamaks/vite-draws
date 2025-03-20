@@ -18,7 +18,7 @@ const root = createRoot(rootElement);
 const { Excalidraw } = window.ExcalidrawLib;
 root.render(
     <StrictMode>
-        <ExampleApp appTitle={"Excalidraw Example"} useCustom={(api: any, args?: any[]) => {}} excalidrawLib={window.ExcalidrawLib}>
+        <ExampleApp appTitle={"Draw"} useCustom={(api: any, args?: any[]) => {}} excalidrawLib={window.ExcalidrawLib}>
             <Excalidraw />
         </ExampleApp>
     </StrictMode>
