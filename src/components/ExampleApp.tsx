@@ -38,7 +38,6 @@ type PointerDownState = {
     };
 };
 
-
 export interface AppProps {
     appTitle: string;
     useCustom: (api: ExcalidrawImperativeAPI | null, customArgs?: any[]) => void;
@@ -144,34 +143,22 @@ export default function ExampleApp({ appTitle, useCustom, customArgs, children, 
                 UIOptions: {
                     canvasActions: {
                         loadScene: false,
-                        changeViewBackgroundColor:true,
+                        changeViewBackgroundColor: true,
                     },
                     tools: { image: !disableImageTool },
                 },
-                onLinkOpen,
-                onPointerDown,
+                // onLinkOpen,
+                // onPointerDown,
                 validateEmbeddable: true,
             },
             <>
                 {excalidrawAPI && <Footer></Footer>}
 
                 {renderMenu()}
-                {excalidrawAPI && <TTDDialogTrigger icon={<span>😀</span>}>Text to diagram</TTDDialogTrigger>}
-                <TTDDialog
-                    onTextSubmit={async (_) => {
-                        console.info("submit");
-                        // sleep for 2s
-                        await new Promise((resolve) => setTimeout(resolve, 2000));
-                        throw new Error("error, go away now");
-                        // return "dummy";
-                    }}
-                />
             </>
         );
         return newElement;
     };
-
-
 
     const onLinkOpen = useCallback(
         (
@@ -208,24 +195,18 @@ export default function ExampleApp({ appTitle, useCustom, customArgs, children, 
         }
     };
 
-  
-
-
-
     const renderMenu = () => {
         return (
             <MainMenu>
                 <MainMenu.DefaultItems.SaveAsImage />
-                <MainMenu.DefaultItems.Export />
+                {/* <MainMenu.DefaultItems.Export  /> */}
                 <MainMenu.Separator />
-              
-               <MainMenu.Separator />
-                <MainMenu.ItemCustom>
-                    <button style={{ height: "2rem" }} onClick={() => window.alert("custom menu item")}>
-                        custom item
-                    </button>
-                </MainMenu.ItemCustom>
-                <MainMenu.DefaultItems.Help />
+
+                <MainMenu.DefaultItems.ChangeCanvasBackground />
+
+                <MainMenu.Separator />
+
+                <MainMenu.DefaultItems.ClearCanvas />
 
                 {/* {excalidrawAPI && <MobileFooter excalidrawLib={excalidrawLib} excalidrawAPI={excalidrawAPI} />}  */}
             </MainMenu>
@@ -280,9 +261,7 @@ export default function ExampleApp({ appTitle, useCustom, customArgs, children, 
                     </button>
                 </div>
             </div>
-            <div className="excalidraw-wrapper">
-                {renderExcalidraw(children)}
-            </div>
+            <div className="excalidraw-wrapper">{renderExcalidraw(children)}</div>
         </div>
     );
 }

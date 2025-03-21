@@ -6,6 +6,7 @@ import "@excalidraw/excalidraw/index.css";
 import type * as TExcalidraw from "@excalidraw/excalidraw";
 
 import ExampleApp from "./components/ExampleApp";
+import DrawingField from "./components/DrawingField/DrawingField";
 
 declare global {
     interface Window {
@@ -21,5 +22,6 @@ root.render(
         <ExampleApp appTitle={"Draw"} useCustom={(api: any, args?: any[]) => {}} excalidrawLib={window.ExcalidrawLib}>
             <Excalidraw />
         </ExampleApp>
+        {/* <DrawingField /> */}
     </StrictMode>
 );
